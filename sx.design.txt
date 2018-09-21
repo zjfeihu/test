@@ -1,0 +1,1182 @@
+
+
+|-- workspace
+    |-- apis
+    |-- stores
+
+
+
+
+
+
+trunk, branch, image, // 主干，分支，镜像
+websites, business, groups, pages //站点，业务，页面 
+
+
+
+业务名，比如member
+虚拟分组，比如login，seller
+
+<layout.login>
+<layout.seller>
+<layout.shop>
+<layout.order>
+
+
+
+mainSite/member/login/login.htm   <= /login.htm
+
+mainSite/member/seller/goods_cate_init.htm
+mainSite/member/seller/goods_create.htm
+mainSite/member/seller/goods_fromTaobao.htm
+
+
+
+
+
+
+
+
+websites
+|
+|-- baseModules (global.modules)
+|   |-- plugins
+|   |   |-- jquery.js
+|   |   |-- jquery.lazyload.js
+|   
+|   
+|-- 571xz (global.modules)
+|   |-- config
+|   |   |-- development
+|   |   |-- production
+|   |   
+|   | 
+|   |-- layout
+|   |   |-- topbar
+|   |   |-- header
+|   |   |-- footer 2.2.3
+|   |
+
+
+|
+|-- mainSite (website) 
+|   |
+|   |-- index (business)
+|   |
+|   |-- search (business)
+|   |   |-- common (groups.modules)
+|   |   |-- search
+|   |   |-- goods
+|   |   |-- newgoods
+|   |   |-- shops
+|   | 
+|   |-- member (business)
+|   |   |
+|   |   |-- default (groups)
+|   |   |   |-- useinfo
+|   |   |   |-- account_bind
+|   |   |
+|   |   |-- login (groups)
+|   |   |   |-- common (groups.modules)
+|   |   |   |-- login
+|   |   |   |-- loginout
+|   |   |   |-- registor
+|   |   |   |-- resetPassword
+|   |   |   |-- otherPages...
+|   |   |   
+|   |   |-- seller (groups)
+|   |   |   |-- common (groups.modules)
+|   |   |   |-- index
+|   |   |   |-- favorate_goods
+|   |   |   |-- favorate_shops
+|   |   |   |-- favorate_goodspackage
+|   |   |
+|   |   |-- supplier (groups)
+|   |   |   |-- common (groups.modules)
+|   |   |   |-- pages...
+|   |   
+|   |-- shop (business)
+|   |   |-- index
+|   |   |-- goods_search 
+|   |   |-- goods_detail 
+|   |   |-- photo_list
+|   |   |-- photo_detail
+|
+|
+|
+|-- daifaSystem (website) 
+
+
+
+getShopData
+getStoreData
+
+    get_seller_favorate_goodses?page=2
+
+$$.get, put, delete(
+    'apis/seller/favorate/goodses?page=2', function(){}, data
+)
+
+    |   |   |-- POST    apis/session?user=&pwd=
+    |   |   |-- DELETE  apis/session
+
+            |-- GET     apis/seller/favorate/goodses?page=2
+            |-- GET     apis/seller/favorate/shops?page=1
+            |-- GET     apis/seller/favorate/shop?id=${shopid}
+            |-- DELETE  apis/seller/favorate/goodses?ids=${goods1},${goods2},...,${goodsN}
+            |
+            |-- GET     apis/supplier/goodses?page=1&stat=3
+            |-- DELETE  apis/supplier/goodses?ids=${goods1},${goods2},...,${goodsN}
+            |-- PUT     apis/supplier/goods?stat=1&id=${goodsid}
+            |-- POST    apis/supplier/goods?data={title:"",....}
+            |-- POST    apis/supplier/goods/mainimg?data=[....]
+            |-- 
+
+|   |-- login
+
+
+
+
+<sdata session数据>
+@session{
+    @userId 
+    @userNick
+    @userType
+}
+</sdata>
+
+
+
+
+git.push
+git.merge
+git.commit
+
+
+
+PUT git.branch.work/fileuri?value=66666666666 
+GET git.image.work/fileuri
+
+GET image/module/code?id=${moduleId}
+GET trunk/modules?used=false
+GET trunk/modules?rootpath=mainSite/member/login/common&used=false
+DELETE trunk/modules?ids=...
+DELETE trunk/module?id=...
+DELETE trunk/modules?rootpath=mainSite/... fource=true
+PUT trunk/module?id=${moduleId}&title=ABCD
+PUT trunk/modules?data=[1,2,3]
+POST trunk/module?data={...}
+
+
+PUT branch/module?
+POST 
+DELETE 
+
+dev
+|
+|-- client (客户端)
+|   |
+|   |-- 
+|   
+|
+|
+|-- server (服务端)
+|
+|
+|
+
+
+
+api.sx/v1.0.0/users (用户数据)
+api.sx/v1.0.0/workspaces (工作区)
+api.sx/v1.0.0/apps (应用，分为website和modules)
+
+api.sx/v1.0.0/branch/business?data={...}
+api.sx/v1.0.0/branch/groups?data={...}
+api.sx/v1.0.0/branch/module?data={...}
+
+
+GET api.sx/v1.0.0/branch/module/dependencies?uri=member/supplier/common/layout
+
+
+
+571xz
+|
+|-- common (modules)
+|   |
+|   |-- config (module)
+|   \-- session (module) ✓
+|   
+|-- layout (modules)
+|   |
+|   \-- topbar (module) ✓
+|   
+|   
+|   
+
+
+
+
+
+
+|-- common (modules)
+|   |
+|   |-- base (modules)
+|   |   |
+|   |   |-- css (module)  ✓
+|   |   \-- js (module)
+|   |  
+|   \-- form (modules)
+|       |
+|       |-- input (module)
+|       \-- button (module)
+|       
+|  
+|
+|-- member (business)
+|   |
+|   |-- common (modules)
+|   |   |
+|   |   |-- config (module) ✓
+|   |   \-- header (module)
+|   |   
+|   |-- login (group)
+|   |   |
+|   |   |-- common (modules)
+|   |   |   |
+|   |   |   |-- topbar (module)
+|   |   |   |-- header (module) ✓
+|   |   |   \-- other (module)
+|   |   | 
+|   |   |-- login (page)
+|   |   |   |
+|   |   |   |-- main (module)
+|   |   |   |-- left-content (module)  ✓
+|   |   |   |-- right-content (module)
+|   |   |   |-- center-content (module)
+|   |   |   \-- other (module)
+|   |   | 
+|   |   |-- register (page)
+|   |   |   |
+|   |   |   |-- main (module)
+|   |   |   |-- left-content (module)
+|   |   |   |-- right-content (module)
+|   |   |   |-- center-content (module)
+|   |   |   \-- other (module)
+|   |   |   
+.   .   .
+.   .   .
+.   .   .
+
+
+page://member/login/login.html
+
+main.mod: (
+
+    <!--&common#layout, { headerType:1 }-->
+
+    <cdata 本地数据>
+    @args{
+        @headerType /// long 头类型 
+    }
+    </cdata>
+
+    {{if $args.headerType == 1 }}
+        {{@include #header1}}
+    {{else}}
+        {{@include #header2}}
+    {{/if}}
+
+
+    [header1].$args.headerTitle
+
+    header1: (
+        <cdata 头数据>
+        @args{
+            @headerTitle /// 副标题
+            @navs[
+                @text 
+                @href
+            ]
+        }
+        </cdata>
+
+        <div>
+            <h1>四季星座网</h1>
+            <h2>{{$args.headerTitle}}</h2>
+            <ul>
+                {{each $args.navs as nav key}}
+                <li><a href="{{nav.href}}">{{nav.text}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    )
+
+    header2: (
+        <cdata 数据>
+        @args{
+            @headerInfo /// 头信息
+        }
+        </cdata>
+        
+        <div>
+            <p>{{$args.headerInfo}}</p>
+        </div>
+    )
+
+    {{@module *xz#header2}}
+    
+    {{module *xz#header1}}
+        headerTitle: '商品库'
+        navs: [
+            { text:'首页', href:'index.htm' }
+            { text:'资讯', href:'zhixun.htm' }
+        ]
+    {{/module}}
+
+    module: {
+        args,   ///
+        cdatas, /// 
+        ajaxs,
+        modules,
+
+    }
+
+
+    unique (唯一的模块)
+    multiple (多实例的模块)
+
+    <cargs>
+    #headerTitle        /// string 副标题
+    #navs(3)[           /// object 导航数据 
+        #text zh(12)    /// string 导航文本
+        #href url()     /// string 导航链接
+    ]
+    </cargs>
+
+    /// text(12)    // 文本
+    /// en(66)      // 英文文本    
+    /// zh(12)      // 中文文本
+    /// url(33)     // 链接
+    /// img(800,600)    // 图片链接
+    /// bool()      // 布尔值
+    /// num(100++)  // 
+    
+    /// num(1,1000) // 数字范围
+
+    <sargs>
+    ...
+    </sargs>
+
+
+    {{module common/xz#search}}
+        $fields: [
+            { name:'webSite', value:query.webSite }
+            { name:'mid', value: query.mid }
+            { name:'pid', value: query.pid }
+            { name:'cid', value: query.cid }
+            { name:'sort', value: query.sort }
+            { name:'d', value: query.d }
+            { name:'sp', value: query.sp }
+            { name:'ep', value: query.ep }
+            { name:'keyword', value: query.keyword }
+            { name:'page', value: query.page }
+        ]
+    {{/module}}
+
+    {{module common/xz#header}} 
+        headerTitle: 'xxxx' 
+        navs: [ {text:'首页', href:'index'}, {text:'资讯', href:'zhixun'} ]  
+    {{/module}}
+
+    <!--&common/xz#search, {
+        $fields: [
+            {name:'webSite', value: ''+ query.webSite},
+            {name:'mid', value: ''+query.mid},
+            {name:'pid', value: ''+query.pid},
+            {name:'cid', value: ''+ query.cid},
+            {name:'sort', value: ''+ query.sort},
+            {name:'d', value: ''+ query.d},
+            {name:'sp', value: ''+ query.sp},
+            {name:'ep', value: ''+ query.ep},
+            {name:'keyword', value: ''+ query.keyword},
+            {name:'page', value: ''+ query.page}
+        ]
+    }-->
+
+
+
+
+    {{@layout}}
+
+    <!--&sx/jquery#1.9.1-->
+    <!--&sx/jquery#1.9.2-->
+
+    
+
+    v1.2.15 
+
+    main.mod (page, style, demo) 
+    
+
+    <!--&571xz/common#session-->
+    <!--&571xz/layout#topbar-->
+    <!--&common/base#css-->
+    <!--&common#config-->
+    <!--&common#header-->
+    <!--&#left-content-->
+
+    
+
+
+)
+
+
+
+<!--&common#layout--> (group内私有布局模块)
+<!--&member/common#layout--> (业务内公用布局模块)
+<!--&common/base#js--> (应用公用模块)
+
+
+{{module xz#paginationInit}}
+
+<!--&xz/paginationInit-->
+
+
+
+
+
+
+
+global_modules
+|
+|-- base (groups.modules)
+|   |
+|   |-- css (module)
+|   \-- js (module)
+|
+|-- 
+
+
+
+mainSite
+|
+|-- member (groups.business)
+|   |
+|   |-- common (group.modules)
+|   |   |    
+|   |   \-- config (module)
+|   |     
+|   |-- login (group.pages)
+|   |   |    
+|   |   |-- common (group.modules)    
+|   |   |   |    
+|   |   |   |-- config (module)
+|   |   |   |-- topbar (module)
+|   |   |   \-- base (module)
+|   |   |
+|   |   |-- login (page)
+|   |   |   |
+|   |   |   |-- main (entry.module)
+|   |   |   |-- config (config.module)
+|   |   |   |-- left-content (module)
+|   |   |   |-- right-content (module)
+|   |   |   \-- center-content (module)
+
+
+ftls: (
+    mainSite/member/index/login.ftl  => https?://mainSite/login.htm
+    mainSite/member/common/config.ftl (业务公用配置)
+    mainSite/member/login/common/config.ftl (login组公用配置)
+    mainSite/member/login/login/topbar.ftl (login组公用模块))
+) 
+
+styles: (
+    mainSite/member/common.css
+    mainSite/member/common.js
+    mainSite/member/login/common.css
+    mainSite/member/login/common.js
+)
+
+
+
+
+sidebar: (
+
+    <cargs>
+        ...
+    </cargs>
+
+    <sargs>
+        ...
+    </sargs>
+
+    <dargs>
+    #sidebarType /// string 侧边栏类型，enmu(seller:分销商,supplier:供应商,other)，sql(type1,type2)
+    </dargs>
+
+    {{{if sidebarType == 'seller'}}}
+        ...
+    {{{else if sidebarType == 'supplier'}}}
+        ...
+    {{{else}}}
+        ...
+    {{{/if}}}
+
+)
+
+
+<moduleMeta>
+模块元信息
+</moduleMeta>
+
+<moduleBody>
+模块内容
+</moduleBody>
+
+<moduleData>
+模块数据
+</moduleData>
+
+
+
+<!--&sx/jquery-->
+<!--&sx/react/react-dom-->
+<!--&sx/react/react-router-->
+
+
+<div>
+    {{title}}
+    {{module #sidebar}} *title, *speed: 666 {{/module}}
+</div>
+
+=== 自然，优美，智能 ===
++ 自然：看上去很自然，本该如此，不违和
++ 优美：够简洁，够清楚，引发联想和思路，甚至是灵感
++ 智能：极尽所能简化过程，尽量避免人工干预，想你所想
+
+=== 一体化，自动化，灵活扩展，了如指掌 ===
++ 一体化：支持集成各种环境于一身，环境，开发，测试，模拟数据，文档，构建，
++ 自动化：自动化测试，自动化模拟数据，半自动化管理资源
++ 灵活扩展：可以使用和引用任何服务协议的工具，插件，模块，资源
++ 了如指掌：对每一个步骤，代码，模块，资源都能心中有数
+
+
+<script>
+import util form './util'
+exports default {
+    datas: {
+        title: []
+    },
+    mouted(){
+        util.interval(() => {
+            this.title = new Date()
+        })
+    },
+}
+</script>
+
+
+Res {
+    file {
+        img, iconfont, text, html
+    }
+    module,
+    
+
+}
+
+Module {
+    meta {
+        name: '模块名'
+        version: '版本号'
+        trunkversion: '主干版本号'
+        origin: 'sx/jquery@1.2.3|571xz/common#session@1.3.1' // 引用来源
+    }
+    body {
+        module_code
+    }
+    datas {
+        cdatas // 前端数据
+        sdatas // 后端数据
+    }
+}
+
+<cdata>
+#headerType $enum(66,77,88)(3) /// string,null 头类型
+</cdata>
+
+
+{{{if name == '{{headerType}}' headerType }}}
+
+<sdata>
+
+</sdata>
+
+{ type: 'array,null', data: [ [], [] ], default: 0 }
+
+
+<assign $querys=query?{}>
+
+{{{rename $querys = query || {} }}}
+
+
+@goods(where id=${id}){
+    @title 
+    @price
+}
+
+
+
+@goodses(where id=${goodsid} && offset 100 limit 10)[
+    @title
+    @price
+]
+
+@goodses.update(where price < 0)[
+    @price 0
+]
+
+@goodses.push{
+    @title 666
+    @name 888
+}
+
+@goodses.push[
+
+
+]
+
+
+
+
+<ajax 发布商品>
+import 'xz/goods'
+import 'xz/goodses'
+
+
+#json /// object 商品数据
+
+@goods.src(json)    // 使用数据
+@goods.validate()   // 验证数据的有效性
+@goods.format()     // 格式化数据
+
+@goodses.push(@goods) // 执行数据提交
+
+//@throw {message:'自定义错误'}
+
+@error(err){
+    return {
+        code: 404,
+        message: err.message
+    }
+}
+
+@exports{
+    @message: '商品发布成功'
+    @href: @goodses.href
+}
+
+@:goods.validate{
+    
+    if($validate.isEmpty(goods.title)){
+        throw '商品标题不能为空！' 
+    }
+
+    if($validate.isPrice(goods.price)){
+        throw '商品价格不符合要求！'
+    }
+
+}
+
+@:goods.format{
+
+    return {
+        title: mygoods.title,
+        price: mygoods.price.toFixed(2)
+    }
+
+}
+
+@:goodses.push(goods){
+    //....
+    return {
+        href: 'http://www.571xz.com/detail.htm?id=666'
+    }
+}
+
+</ajax>
+
+
+atscript // 用于数据的操作和查询
+
+
+
+page.headerType = 777
+
+$dev, $prod,
+
+
+
+
+
+group: member (会员)
+|
+|-- group: seller (分销商)
+|   |  
+|   |-- 
+
+
+
+
+
+创建组：会员
+    创建组：分销商
+        创建组：收藏的
+            创建组：商品
+            
+member
+|
+|-- seller
+|   |-- favorate
+|   |   |-- goods    enmu(GET:获取,POST:添加,DELETE:移除) /// 收藏的商品
+|   |   \-- shop    enmu(GET:获取,POST:添加,DELETE:移除) /// 收藏的店铺
+|   |
+|   |-- order
+|   |   |
+|   |   
+
+
+
+添加收藏的商品：POST    member/seller/favorate/goods?id=${goodsid}
+移除收藏的商品：DELETE  member/seller/favorate/goods?id=${goodsid}
+获取收藏的商品：GET     member/seller/favorate/goods?id=${goodsid}
+
+创建订单 - 添加到进货车：POST member/seller/cart/order?data={goodsid:'111',nums:[ { colorid:'111', sizeid:'111', num:3} ]}
+创建订单 - 生成确认订单：POST member/seller/confirm/order?
+
+
+order/cart.create? // 创建进货车订单
+order/temp.create?
+order/real.create? // 创建正式订单
+
+order/real.pay? // 支付订单
+
+
+
+alias
+
+
+
+let apiUrl = {{@ajax.delete seller/cart/order}}
+
+
+$$.ajax('post', {{@ajax seller/cart/order.add}}, data, callback)
+$$.ajax('post', {{@ajax seller/cart/order.remove}}, data, callback)
+
+
+
+
+
+
+主体设定：
+all {
+
+    users {
+
+    }
+    apps {
+        goups (modules, pages)
+    }
+    apis {
+        groups (groups, ajax)
+    }
+
+}
+
+
+GET system/users.manage?type=[1,2,3] // 获取用户列表
+POST user?name=guest:test/111111&pwd=123456 // 创建账号
+POST user/session?name=test&pwd=111111 // 登录平台
+DELETE user/session // 退出
+
+GET apps?page=3&limit=5             // 获取app列表
+GET user/info                       // 获取用户信息
+GET user/messages.list?type=..      // 获取用户消息列表
+GET user/message.detail?id=..       // 获取用户指定消息详情
+GET workstatus  // 获取用户工作保持的状态，比如打开的页面所处的位置
+
+
+参与的应用，私有的应用，观察的应用
+
+GET app/info?id=${appid}
+
+POST organization_create?data={name:'',desc:''}
+
+POST app_create?data={id:'571xz',type:'modules',name:'星座网公用模块'}
+POST app_create?data={id:'mainSite',type:'website',name:'星座网主站'}
+POST group_create?data={id:'common',type:'modules',name:'星座网主站公用模块',path:'mainSite'}
+POST group_create?data={id:'member',type:'pages',name:'会员业务',path:'mainSite'}
+POST group_create?data={id:'seller',type:'pages',name:'分销商业务',path:'mainSite/member'}
+POST group_create?data={id:'order',type:'pages',name:'分销商订单系统',path:'mainSite/member/seller'}
+POST page_create?data={id:'cart',type:'page',name:'进货车',path:'mainSite/member/seller/order'}
+POST module_create?data={id:'sidebar',type:'module',name:'侧边栏',path:'mainSite/member/seller/order/cart'}
+
+PUT module_update?data={uri:'mainSite/member/seller/order/cart/sidebar',name:'...',code:'...',data:'...',version:''} //更新模块
+
+POST module_push?data={uri:'...'} // 推送到主干
+PUT group_update?data={uri:'mainSite/member/seller/order',name:'...',path:'mainSite/member'}
+
+POST branch_build // 构建分支
+
+let tr = setInterval(function(){ //不断的从服务器拉构建数据
+    fetch('branch_build', resp => {
+        if(resp.err){
+            clearInterval(tr)
+            msg.err(resp.err)
+        }else{
+            that.builds = resp.builds
+        }
+    })
+})
+
+
+POST buildfile_commit?data={uri:'mainSite/member/seller/order/cart',type:'html',data:'...'}
+GET buildfile_pull?id=mainSite/member/seller/order/cart&dataFrom=build,stage // 获取构建文件的相关资源
+DELETE module_trunk?uri=...
+DELETE module_branch?uri=...
+
+POST branch_create?data={nam:'xxx'}
+POST branch_checkout?id=${branchId}
+GET branchs_list?type=[0:全部,1:已检出,2:未检出]
+
+
+
+{{@module member/seller/order/cart/sidebar}}
+{{@module *sidebar}}
+
+
+POST branch/group_create?data={}
+POST branch/app_create?data={id:'mainSite',type:'website',name:'星座网主站'}
+POST branch/group_create?
+
+
+mainSite (app)
+|
+|-- common (modules)
+|-- member (group)
+|   |-- common (modules)
+|   |-- seller (group)
+|   |   |-- order (group)
+|   |   |   |-- cart (pages)
+|   |   |   |-- create (pages)
+|   |   |   |-- pay (pages)
+
+
+{{@page member/seller/order/cart}} ==> eg: http://domain/seller/order_cart.htm
+{{@page member/seller/order/create}} ==> eg: http://domain/seller/order_create.htm
+
+
+<a href="{{@page member/seller/order/cart}}">我的进货车</a>
+
+<img src="{{@res img/finish.png}}">
+
+
+<img src="img/finish.png">
+
+<script src="upload.js"></script>
+
+
+<div class="box">
+
+</div>
+
+<style>
+.box{ background:url(xz/finish.png) no-repeat 0 0 }
+</style>
+
+
+
+
+<atmodel goods>
+#pid        /// long,null 商品主类目
+#cid        /// long,null 商品子类目
+#num 20     /// long,null 返回的商品最大条数
+#page 1     /// long,null 返回的分页
+
+@sql{
+    let sql = []
+    let cond = []
+    if(pid){
+        cond.push(`pid=${args.pid}`)
+    }
+    if(cid){
+        cond.push(`cid=${args.cid}`)
+    }
+    if(cond.length){
+        sql.push('WHERE '+ cond.join(' AND '))
+    }
+    sql.push(`LIMIT ${args.num} OFFSET ${args.num * page}`)
+    return sql.join(' ')
+}
+
+@data{
+    @id         /// string  商品id
+    @title      /// string  商品标题
+    @imgsrcs    /// array.string  商品主图
+    @imgsrc(    /// string  商品主图
+        :PI = 3.14
+        :result = 66 * PI
+        *imgsrcs
+
+        @ imgsrcs[0]
+    )
+    @goodsid *id
+}
+</atmodel>
+
+<atmodel cartOrder>
+@sql{
+    #website    /// string 站点标识
+    #num 20     /// long,null 返回的数据最大条数
+    #page 1     /// long,null 返回的分页
+
+    return `WHERE website="${args.website}" AND num="${num}" AND childOrders.`
+}
+
+@data{
+    @id
+    @userNick
+    @childOrders{
+        @sql{
+            #1
+            #2
+            #3
+            return ...
+        }
+        @data{
+           
+        }
+    }
+    @orderId *id
+}
+</atmodel>
+
+<cdata>
+@goodslist:goods({ pid:555, cid:888, num:10, page:3 })[
+    @goodsid
+    @title
+    @imgsrc
+    @imgsrcs
+]
+</cdata>
+
+orders
+| id        | 
+
+
+
+<cdata>
+@orders:cartOrder({ website:'hz', num:10, ... })[
+    @orderId
+    @userNick
+    @childOrders({ $size_not:'X', $color_eq: 'red', $num_gt:3, $color_eq:'xx', $text_has:'', $text_start:'xx', $text_end:'xx' })[
+        @childOrderId
+        @title
+        @imgsrc
+        @nums 
+    }
+]
+</cdata>
+
+
+
+
+
+@cartOrder{
+    @id         // 订单id
+    @ownerId    // 订单用户id
+    @goodsId    // 商品id
+    @goodsSkuId // 商品skuid
+    @num        // 订单数量
+} 
+
+通过goodsId查询商品状态，店铺信息，通过goodsId，skuId联合查询sku状态
+
+
+@goods{         // 商品数据
+    @id         // 商品订单
+    @title      // 商品标题
+    @imgsrcs    // 商品主图
+    @piprice    // 商品批发价 
+    @liprice    // 商品零售价 
+    @no         // 商品货号
+    @shopId     // 所属店铺
+}
+
+@goodsExtra{    // 商品附加数据
+    @id         // 商品id
+    @desc       // 商品详情描述
+
+}
+
+UPDATE goods
+
+UPDATE goods SET title="555" WHERE goods.id=1;
+UPDATE goodsExtra SET desc="商品描述" WHERE goodsExtra.id=666
+
+
+$db('goods').update([
+    { 
+        condition: {
+            num_gt: 3, num_lt: 5
+        },
+        value: {
+            title: '商品标题'
+        }
+    }
+])
+
+#data{
+    @goodses[
+        @id
+        @price
+    ]
+}
+
+@goodses.src(data.goodses)
+@goodses.toSqlExp()
+@goods.update(:goodses)
+
+
+@goods.update(data.goodses.map(goods => $sql.condition({id:goods.id}, {price:goods.price})))
+
+
+@:goodses.toSqlExp{
+    return this.data.map(goods => {
+        return {
+            condition: {
+                id: goods.id
+            },
+            value: {
+                price: goods.price
+            }
+        }
+    })
+}
+
+@:goodses.toSqlExp{
+    return this.data.map(goods => $sql.condition({id:goods.id}, {price:goods.price}))
+}
+
+
+
+@goods.update[
+    ( 
+        num.gt(3)?, num > 3,  num < 5, text.startWith('555')?,
+        keyword.endWith('\)\{')?, text.not(test)?
+        ...
+    ){
+        title: '商品标题'
+    }
+    ( id = 6666 ){
+        title: 'xxx'
+        price: 9
+    }
+
+    ( * ){
+        price:6
+    }
+]
+
+@goods.push( ... )
+
+
+
+#goodsId 
+#price 
+
+@goods.update( { id:goodsId }, { price:price } )
+@goods.update( 
+    goodes.map(goods => $sql.condition(
+        {id:goods.id}, 
+        {price:goods.price}
+    ))  
+)
+
+
+@goodsSku{      // 商品sku数据
+    @id         // 商品skuid
+    @colorText  // 商品sku颜色
+    @sizeText   // 商品sku尺码
+    @goodsId    // 此sku对应的商品id
+}
+
+@shop{          // 店铺数据
+    @id         // 店铺id
+    @no         // 店铺号
+    @name       // 店铺名称
+    @level      // 店铺等级
+    @cateId     // 店铺主营类目
+    @goodsSevices   // 商品售后服务，可退，可换
+    @title      // 店铺标题
+    @mobile     // 手机号码
+    @aliww      // 阿里旺旺
+    @qq         // 腾讯QQ
+    @tbId       // 店铺的淘宝id
+    @tbUrl      // 淘宝店铺地址
+    @ownerId    // 店铺所属用户id
+    @marketId   // 所属市场id
+}
+
+@market{        // 市场数据
+    @id         // 市场id，（市场+楼层组合形成市场id）
+    @name       // 市场名称
+    @floor      // 楼层名称
+}
+
+
+
+
+
+// SELECT name FROM market WHERE floor = '' 
+@marketName({ website:'hz', id:'12354' })
+
+
+@goods.id(id=666)                   /// string 商品id，导出字段id，默认以最后一个字段作为字段名
+@goods.id<>(id=666)                 /// string 商品id，导出字段goodsId，匿名导出所有字段的驼峰形式
+@goods.id<goodsIdAlias>(id=666)     /// string 商品id，导出字段goodsIdAlias，使用别名作为字段名
+
+
+
+<cdata [global,scope] >
+#shopId /// string 店铺id
+#page 1 /// string 页码
+:limit = 10 // 分页大小
+
+@goodses:goods( $shopId_eq(shopId), $limit(limit) )[    /// 导出店铺前100条商品数据
+    @id<>                                               /// string 商品id                    
+    @title                                              /// string 商品标题
+    @shop.id<> shopId                                   /// string 店铺id
+    @shop.name<>:(shopId="${shopId}")                   /// string 店铺名称
+    #shop.marketId:(shopId="${shopId}")                 /// string 市场id
+    @::market( marketId="@marketId" ){
+        @name<>     /// string 市场名称
+        @fullName "@{marketName} - @{shopName}"
+    }
+    @fullName2 "@marketName - @shopName"
+    
+]
+
+</cdata>
+
+
+
+@goods:goods(id="${id}"), shop(goodsId="${id}"){
+    @goods.id<goodsId>
+    @goods.title
+    @goods.imgsrc
+    @shop.name<> 
+    @market.name<>:market(marketId=shop.marketId)
+}
+
